@@ -1,153 +1,134 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Kaggle Competition - Starter
-
-## Introduction
-
-Welcome to your first week of work at the Disease And Treatment Agency, division of Societal Cures In Epidemiology and New Creative Engineering (DATA-SCIENCE). Time to get to work!
-
-Due to the recent epidemic of West Nile Virus in the Windy City, we've had the Department of Public Health set up a surveillance and control system. We're hoping it will let us learn something from the mosquito population as we collect data over time. Pesticides are a necessary evil in the fight for public health and safety, not to mention expensive! We need to derive an effective plan to deploy pesticides throughout the city, and that is **exactly** where you come in!
-
-## Dataset
-
-The dataset, along with description, can be found here: [https://www.kaggle.com/c/predict-west-nile-virus/](https://www.kaggle.com/c/predict-west-nile-virus/).
-
-**This is also where you will be submitting your code for evaluation**. We will be using the Kaggle Leaderboard to keep track of your score. The public leaderboard uses roughly 30% of the dataset to score an AUC (Area Under Curve) metric. [You can read more about the scoring metric here](https://www.kaggle.com/wiki/AreaUnderCurve).
-
-> If you do not already have a Kaggle account, you will need to sign up on the website.  Also note that you will be submitting a "Late Submission" on Kaggle because the official competition has ended.  You can use the leaderboard to see how your results compare against roughly 1300 other data science teams!
-
-You can submit predictions as many times as you want to Kaggle, but there is a limit of 5 submissions per day.  Be intentional with your submissions!
+# Project 4 - West Nile Virus Predictions
 
 
-#### Navigating Group Work
 
-This project will be executed as a group.  To make your team as effective and efficient as possible you should do the create a shared GitHub repo and project planning document as described in the deliverables section below.
+## Context 
 
-## Deliverables
 
-**GitHub Repo**
+West-Nile-Virus(WNV) is a mosquito-borne disease that has plagued the continental United States since 1999. The vast majority of infected people will develop mild symptoms that will subside over a few days to several weeks (source). About 1 out of 150 infected people develop a serious illness. The sometimes neuroinvasive virus may cause encephalitis and meningitis, which can prove to be fatal. There is currently no vaccine to prevent or medication to treat WNV (source).
 
-1. Create a GitHub repository for the group. Each member should be added as a contributor.
-2. Retrieve the dataset and upload it into a directory named `assets`.
-3. Generate a .py or .ipynb file that imports the available data.
+Outbreaks typically intensify over as little as a couple of weeks; however, human case reports are lagging indicators of risk since case reports occur weeks after the time of infection. Thus, environmental surveillance – monitoring enzootic and epizootic WNV transmission in mosquitoes and birds – forms a timelier index of risk, and is an important cornerstone for implementing effective WNV risk reduction efforts.Research and operational experience shows that increases in WNV infection rates in mosquito populations can provide an indicator of developing outbreak conditions several weeks in advance of increases in human infections. Aggressive and timely efforts to reduce the number of infected adult mosquitoes will optimally impact human WNV case incidence (source)
 
-**Project Planning**
 
-1. Define your deliverable - what is the end result?
-2. Break that deliverable up into its components, and then go further down the rabbit hole until you have actionable items. Document these using a project managment tool to track things getting done.  The tool you use is up to you; it could be Trello, a spreadsheet, GitHub issues, etc.
-3. Begin deciding priorities for each task. These are subject to change, but it's good to get an initial consensus. Order these priorities however you would like.
-4. You planning documentation (or a link to it) should be included in your GitHub repo.
 
-**EDA**
+## Scope
 
-1. Describe the data. What does it represent? What types are present? What does each data points' distribution look like? Discuss these questions, and your own, with your partners. Document your conclusions.
-2. What kind of cleaning is needed? Document any potential issues that will need to be resolved.
+The goal of this project is to derive a plan to deploy pesticides throughout the city of Chicago. Hence, the scope of our plan for deployment and cost analysis will also be limited within the city of Chicago.
 
-**Note:** As you know, EDA is the single most important part of data science. This is where you should be spending most of your time. Knowing your data, and understanding the status of its integrity, is what makes or breaks a project.
+However, the model that we have trained can certainly be used in other states/cities within the United States to predict the potential outbreak of West Nile Virus.
 
-**Modeling**
+The modelling techniques and strategies will be presented to biostaticians, epidemiologists, American Public Health Service and decision makers from Centers for Disease Control and Prevention (CDC).
 
-1. The goal is of course to build a model and make predictions that the city of Chicago can use when it decides where to spray pesticides! Your team should have a clean Jupyter Notebook that shows your EDA process, your modeling and predictions.
-2. Conduct a cost-benefit analysis. This should include annual cost projections for various levels of pesticide coverage (cost) and the effect of these various levels of pesticide coverage (benefit). *(Hint: How would we quantify the benefit of pesticide spraying? To get "maximum benefit," what does that look like and how much does that cost? What if we cover less and therefore get a lower level of benefit?)*
-3. Your final submission CSV should be in your GitHub repo.
 
-**Presentation**
-* Audience: You are presenting to members of the CDC. Some members of the audience will be biostatisticians and epidemiologists who will understand your models and metrics and will want more information. Others will be decision-makers, focusing almost exclusively on your cost-benefit analysis. Your job is to convince both groups of the best course of action in the same meeting and be able to answer questions that either group may ask.
-* The length of your presentation should be about 20 minutes (a rough guideline: 2 minute intro, 10 minutes on model, 5 minutes on cost-benefit analysis, 3 minute recommendations/conclusion).  Touch base with your local instructor... er, manager... for specific logistic requirements!
+## Problem Statement
+
+
+1. To predict locations with high potential of having mosquitoes carrying West Nile Virus.
+2. Find out factors that contribute to the growth and spread of the virus in mosquitoes.
+
 
 ---
 
-**Your project is due at 9:00 AM SGT on Monday, June 1st 2020.**
+## Files Directory
+
+**1. input**
+- [Kaggle Train Dataset](./input/train.csv)
+- [Kaggle Test Dataset](./input/test.csv)
+- [Kaggle Spray Dataset](./input/spray.csv)
+- [Kaggle Weather Dataset](./input/weather.csv)
+- [Kaggle Map Data](./input/mapdata_copyright_openstreetmap_contributors.txt)
+- [Cleaned Train Dataset](./input/cleaned_train.csv)
+- [Cleaned Test Dataset](./input/cleaned_test.csv)
+- [Cleaned Spray Dataset](./input/cleaned_spray.csv)
+- [Cleaned Weather Dataset](./input/cleaned_weather.csv)
+- [Merged Train Dataset](./input/merged_train_lag_10.csv)
+- [Merged Test Dataset](./input/merged_test_lag_10.csv)
+
+**2. code**
+- [Data Cleaning](./code/1_data_cleaning.ipynb)
+- [Feature Engineering ](./code/2_merging_data_feature_engineering.ipynb)
+- [EDA, Modelling & Evaluation ](./code/3_EDA_modelling_evaluation.ipynb)
+
+**3. kaggle_submission**  
+
+Contains our kaggle attempts
+
+**4. deployment**
+- [Code](./deployment/model.py)
+- [Model in pickled file](./deployment/final_rfc_model.pkl)
+- [Templates](./deployment/templates/form_upload.html)
+
+**5. plot_images**  
+
+Contains all the relevant images that we have in the notebooks
+
+
+
+## Data Dictionary
+
+### Variables
+|Feature|Type|Description|
+|---|---|---|
+|Date|object|Date the test is performed|
+|Latitude|float64|Latitude returned from GeoCoder|
+|Longitude|float64|Longitude returned from GeoCoder|
+|Species_CULEX PIPIENS|int64|Mosquito species CULEX PIPIENS|
+|Species_CULEX PIPIENS/RESTUANS|int64|Mosquito species CULEX PIPIENS/RESTUANS|
+|Species_CULEX RESTUANS|int64|Mosquito species CULEX RESTUANS|
+|WnvPresent|int64|whether West Nile Virus was present in these mosquitos. 1 means WNV is present, and 0 means not present|
+|Sprayed|int64|Spraying occured 7 days prior to the testing date and it occured within 100m of a mosquito trap|
+|Avg Pos Dist|float64|Average distance of previously positively tested mosquito traps from each individual trap being tested within 3.2km|
+|Tmax|float64|Max temperature|
+|Tmin|float64|Min temperature|
+|Tavg|float64|Average of max and min temperature|
+|DewPoint|float64|Average dewpoint temperature|
+|WetBulb|float64|Average wetbulb temperature|
+|Heat|float64|Heating degree (SEASON BEGINS WITH JULY)|
+|Cool|float64|Cooling degree (SEASON BEGINS WITH JANUARY)|
+|PrecipTotal|float64|rainfall in inches (24-HR PERIOD ENDING AT INDICATED LOCAL STANDARD TIME)|
+|StnPressure|float64|Average Station Pressure (INCHES OF HG)|
+|SeaLevel|float64|Average Sea level Pressure (INCHES OF HG)|
+|ResultSpeed|float64|Resultant Wind Speed (MILES PER HOUR)|
+|ResultDir|float64|Resultant Wind Direction (WHOLE DEGREES)|
+|AvgSpeed|float64|Average Wind Speed (MILES PER HOUR)|
+|Sunrise|float64|Time of Sunrise|
+|Sunset|float64|Time of Sunset|
+|bc|int64|Code of Weather Phenomena PATCHES|
+|br|int64|Code of Weather Phenomena MIST|
+|dz|int64|Code of Weather Phenomena DRIZZLE|
+|fg|int64|Code of Weather Phenomena FOG|
+|fg+|int64|Code of Weather Phenomena HEAVY FOG|
+|fu|int64|Code of Weather Phenomena SMOKE|
+|gr|int64|Code of Weather Phenomena HAIL|
+|hz|int64|Code of Weather Phenomena HAZE|
+|mi|int64|Code of Weather Phenomena SHALLOW|
+|ra|int64|Code of Weather Phenomena RAIN|
+|sn|int64|Code of Weather Phenomena SNOW|
+|sq|int64|Code of Weather Phenomena SQUALL|
+|ts|int64|Code of Weather Phenomena THUNDERSTORM|
+|vc|int64|Code of Weather Phenomena VICINITY|
 
 ---
 
-### Project Feedback + Evaluation
+## Deployment of Model
 
-For all projects, students will be evaluated on a simple 4 point scale (0-3 inclusive). Instructors will use this rubric when scoring student performance on each of the core project requirements:
+We have also deployed our model so that it can be used by the relevant departments such as the operations team to identify the locations that require spraying. This can also be used in other cities/states. The engine works such that anyone can upload a CSV file with the features that are needed for predictions and a table indicating the presence of West Nile Virus will be generated.
 
-Score | Expectations
------ | ------------
-**0** | _Does not meet expectations. Try again._
-**1** | _Approaching expectations. Getting there..._
-**2** | _Meets expectations. Great job._
-**3** | _Surpasses expectations. Brilliant!_
-
-### Rubric
-
-Your final assessment ("grade" if you will) will be calculated based on a topical rubric (see below).  For each category, you will receive a score of 0-3.  From the rubric you can see descriptions of each score and what is needed to attain those scores.
-
-For Project 3 the evaluation categories are as follows:
-- [Organization](#organization)
-- [Data Structures](#data-structures)
-- [Python Syntax and Control Flow](#python-syntax-and-control-flow)
-- [Probability and Statistics](#probability-and-statistics)
-- [Modeling](#modeling)
-- [Presentation](#presentation)
-
-#### Organization
-
-Clearly commented, annotated and sectioned Jupyter notebook or Python script.  Comments and annotations add clarity, explanation and intent to the work.  Notebook is well-structured with title, author and sections. Assumptions are stated and justified.
+However, the main limitation is that the model was deployed on our local server using a *flask* application. We can look into improving it by deploying it to cloud. We can also improve the frontend interface so that it can provide more useful information and visualizations.
 
 
-| Score | Status                     | Examples                                                                                                                                                                                                                                         |
-|-------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0     | Does not Meet Expectations | 1. Comments and annotations are **absent** <br> 2. There is no clear notebook structure <br> 3. Assumptions are not stated                                                                                                                                       |
-| 1     | Approaching Expectations   | 1. Comments are present but generally unclear or uninformative (e.g., comments do not clarify, explain or interpret the code) <br> 2. There are some structural components like section/subsection headings <br> 3. Assumptions are stated but not justified |
-| 2     | Meets Expectations         | 1. Comments and annotations are clear and informative <br> 2. There is a clear structure to the notebook with title and appropriate sectioning <br> 3. Assumptions are both stated and justified                                                             |
-| 3     | Exceeds Expectations       | 1. Comments and annotations are clear, informative and insightful <br> 2. There is a helpful and cogent structure to the notebook that clarifies the analysis flow <br> 3. Assumptions are stated, justified and backed by evidence or insight               |
 
-#### Data Structures
-
-Python data structures including lists, dictionaries and imported structures (e.g. DataFrames), are created and used correctly.  The appropriate data structures are used in context.  Data structures are created and accessed using appropriate mechanisms such as comprehensions, slices, filters and copies.
-
-| Score | Status | Examples |
-|-------|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0 | Does not Meet Expectations | 1. Appropriate data structures are not identified or implemented <br> 2. Data structures are not created appropriately <br> 3. Data structures are not accessed or used effectively |
-| 1 | Approaching Expectations | 1. Contextually appropriate data structures are identified in some but not all instances <br> 2. Data structures are created successfully but lacked efficiency or generality (e.g., structures were hard-coded with values that limits generalization; brute-force vs automatic creation/population of data) <br> 3. Data structures are accessed or used but best practices are not adopted |
-| 2 | Meets Expectations | 1. Contextually appropriate data structures are identified and implemented given the context of the problem <br> 2. Data structures are created in an effective manner <br> 3. Data structures are accessed and used following general programming and Pythonic best practices |
-| 3 | Exceeds Expectations | 1. Use or creation of data structures is clever and insightful <br> 2. Data structures are created in a way that reveals significant Pythonic understanding <br> 3. Data structures are used or applied in clever or insightful ways |
+## Conclusions and Recommendations
 
 
-#### Python Syntax and Control Flow
+We have selected the *RandomForestClassifier* with hyperparameter *class_weight='balanced_subsample'* as our model of choice, with what we deemed was the best balance between *accuracy* and *sensitivity* (due to the nature of our prediction being disease related and the minimisation of *false negatives* are imperative). *RandomForestClassifier* performed the best in these two metrics when compared to *LogisticRegression, GradientBoosting* and *SVC* models. *RandomForestClassifier* also performed relatively well with *SMOTE* as our balancing technique, however comparing the significant increase in *sensitivity*, we felt that a slight decrease in *accuracy* using *class_weight='balanced_subsample'* was justified. Other balancing techniques such as *ADASYN* and *ClusterCentroids* were considered as well. However, *ADASYN* was inferior to our selection and *ClusterCentroids* is an undersampling technique that brought the negative class down to a number that would be detrimental to the model performance.
 
-Python code is written correctly and follows standard style guidelines and best practices.  There are no runtime errors.  The code is expressive while being reasonably concise.
+The model was created based on the data of 8304 readings in Chicago between 2007 and 2013. The applicability of this model can be brought over and applied to other states across the United States as it generalizes quite well as was seen in our test sample.
 
-| Score | Status | Examples |
-|-------|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0 | Does not Meet Expectations | 1. Code has systemic syntactical issues <br> 2. Code generates incorrect results <br> 3. Code is disorganized and needlessly difficult |
-| 1 | Approaching Expectations | 1. Code is generally correct with some runtime errors <br> 2. Code logic is generally correct but does not produce the desired outcome <br> 3. Code is somewhat organized and follows some stylistic conventions |
-| 2 | Meets Expectations | 1. Code is syntactically correct (no runtime errors) <br> 2. Code generates desired results (logically correct) <br> 3. Code follows general best practices and style guidelines |
-| 3 | Exceeds Expectations | 1. Code adopts clever or advanced syntax <br> 2. Code generates desired results in an easily consumable manner (e.g., results are written to screen, file, pipeline, etc, as appropriate within the flow of the analysis) <br> 3. Code is exceptionally expressive, well formed and organized |
+There are a few limitations to our model and our data. Due to the imbalanced nature of our positive and negative classes, we have had to use balancing techniques which are weightage inflation and oversampling methods. Acquiring more data would be better in reducing this phenomena and aid in generating a more reliable model.
 
+The hyperparameters involved in the instantiation of our model were based on a trial and error method in maximising both *accuracy* and *sensitivity*, as *GridSearchCV* prioritises a singular metric and not a balance of two. There may be a combination of hyperparameter settings that could have done better and could have been missed out during the trial and error phase, as there are too many variations of such combinations to have been covered.
 
-#### Probability and Statistics
+The features involved that took the predominant influence on our models were *Average Positive Distance, Sunrise, Sunset* and *DewPoint*. *Average Positive Distance* was a newly engineered feature based on the average distance of previously positively tested mosquito traps from each individual trap being tested. These are factors to be looked into when considering the presence of West Nile Virus in a particular location. Due to the nature of our features being beyond what is humanly controllable, mitigation efforts can be only limited to methods such as spraying - which would be done in locations churned within our model based on the aforementioned features.
 
-Descriptive and inferential statistics are calculated and applied where appropriate.  Probabilistic reasoning is demonstrated.  There is a clear understanding of how probability and statistics affects the analysis being performed.
-
-| Score | Status | Examples |
-|-------|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0 | Does not Meet Expectations | 1. Descriptive statistical calculations are absent <br> 2. Inferential statistical calculations are absent <br> 3. Probabilities or statistics are not relevant given the context of the analysis |
-| 1 | Approaching Expectations | 1. Descriptive statistics are present in some cases <br> 2. Inferential statistics are present in some cases <br> 3. Probabilities or statistics are somewhat relevant to the analysis context |
-| 2 | Meets Expectations | 1. Descriptive statistics are calculated in all relevant situations <br> 2. Inferential statistics are calculated in all relevant situations <br> 3. Probabilities or statistics are relevant to the analysis |
-| 3 | Exceeds Expectations | 1. Descriptive statistics are calculated, interpreted and visualized (where appropriate) <br> 2. Inferential statistics are calculated, interpreted and visualized (where appropriate) <br> 3. Probabilities or statistics are leveraged to draw meaningful or insightful conclusions |
-
-#### Modeling
-
-Data is appropriately prepared for modeling.  Model choice matches the context of the data and the analysis.  Model hyperparameters are optimized.  Model evaluation is robust.  Model results are extracted and explained either visually, numerically or narratively.
-
-| Score | Status | Examples |
-|-------|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0 | Does not Meet Expectations | 1. Data is not prepared for modeling.<br>2. Models are not implemented or not implemented fully.<br>3. Model hyperparameters are not considered.<br>4. Model evaluation is not performed.<br>5. Model results are unavailable or not extracted. |
-| 1 | Approaching Expectations | 1. Data has some null values, inappropriate types and/or improper handling of categorical labels.<br>2. Model choice is questionable given the objective of the analysis.<br>3. Model hyperparameters are insufficiently or not optimized.<br>4. Model evaluation is performed but the evaluation is not generalizable.<br>5. Model results are extracted but not explained or interpreted. |
-| 2 | Meets Expectations | 1. Data is free from nulls and correctly typed for the given model.<br>2. Model choice is appropriate to the analysis.<br>3. Model hyperparameters are optimally selected.<br>4. Model evaluation reflects generalizeable performance.<br>5. Model results are extracted and explained either visually, numerically or naratively. |
-| 3 | Exceeds Expectations | 1. Data is pristinely prepared with creative or useful feature engineering.<br>2. Model selection is justified and demonstrates an awareness of tradeoffs.<br>3. Model hyperparameters are optimized and the optimization is demonstrated/justified.<br>4. Model evaluation reflects generalizable performance and is interpreted in the context of the analysis.<br>5. Model results are explained, interpreted and related to the overarching analysis goals. |
-
-
-#### Presentation
-
-The goal, methodology and results of your work are presented in a clear, concise and thorough manner.  The presentation is appropriate for the specified audience, and includes relevant and enlightening visual aides as appropriate.
-
-| Score | Status | Examples |
-|-------|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0 | Does not Meet Expectations | 1. The problem was not well explained or ambiguous. <br> 2. The level of technicality was far above or below the target audience. <br> 3. The presentation went substantially over or under time. <br> 4. The speaker's voice was difficult to hear of unclear. <br> 5. The presentation visuals did not seem to support the talk. |
-| 1 | Approaching Expectations | 1. The problem was stated but was not 100% clear. <br> 2. The level of technicality was was good at times, but too low or too high at other times given the target audience. <br> 3. The presentation was given went slightly over or under time. <br> 4. The speaker's voice was at times difficult to understand. <br> 5. The presentation visuals were generally helpful, but some of them were either too complex or disconnected from the narrative. |
-| 2 | Meets Expectations | 1. The problem was framed appropriately for the audience. <br> 2. The level of technicality was appropriate to the target audience. <br> 3. The presentation was given within the allocated timeframe. <br> 4. The speaker's voice had volume and clarity. <br> 5. The presentation visuals were helpful and supportive. |
-| 3 | Exceeds Expectations | 1. The problem was expertly stated and compelling. <br> 2. The level of technicality was perfect for the target audience. <br> 3. The presentation was given within the allocated timeframe and paced evenly throughout. <br> 4. The speaker's voice was clear, understandable and consistent. <br> 5. The presentation visuals provided distinct insight, supported the speaker from the background, and were not distracting. |
+**Mitigation efforts to curb the spread of West Nile Virus should not be the responsibility of the state alone, especially when considering households and their individual influences on mosquito population.** The state could further educate the population through campaigns and programmes on measures and steps to take at home or within their communities. Integrated vector management programs should be carried out and the severity of the disease should be communicated to the public in a manner to illicit preventive action without reliance on statutory intervention.
